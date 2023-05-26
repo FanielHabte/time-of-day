@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Time of Day</title>
+	
     <meta name="robots" content="noindex,nofollow">
     <style>
 		* {padding:0; margin:0;}
@@ -41,7 +42,12 @@
 	</header>
     <main>
 	 <header><h3 id="my-greeting">A JavaScript Project by YOUR NAME HERE</h3></header>
-	    <p>Explain what your page does and how it works here!</p>
+	 <p id="demo"> </p> 
+	    <p> After defining our date, hour, color, and picture, we wrote a nested 
+			if loop in which, depending on the condition met, it displayed 
+			our greeting, e.g.," Good Afternoon," accompanied by its specific photos.
+			For day, first we created an array of days called weekdays then 
+			defined new date then and the d.getDay() returns the specific day.  </p>
 	  <img id ="my-pic" src="images/night.jpg" alt="Time of Day Image" class="flexible">
      <footer>
       <p><small>&copy; 2022 by 
@@ -65,40 +71,56 @@ Evening (6pm to 11pm)
 Night (11pm to 5am)
 
 */
-
-
-
+const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const d = new Date();
+let day = weekday[d.getDay()];
 let myDate = new Date();
 let myHour = myDate.getHours();
 let myGreeting = "";
 let myColor = "";
 let myPic = "";
-	//myHour = 11;
+	//myHour = 13;
 
 	console.log(myHour)
-
-	if(myHour < 12){
+    
+	if(myHour > 5 && myHour < 12){
 		//alert ("Good Morning!");
 		myGreeting = "Good Morning";
-		myColor = "Orange"
-		myPic = "morning.jpg"
-	}else{
-		//alert ("Good Afternoon!");
+		myColor = "Orange";
+		myPic = "morning.jpg";}
+	else if (myHour > 12 && myHour < 18){
+		//alert ("Good Morning!");
 		myGreeting = "Good Afternoon";
-		myColor = "green"
-		myPic = "afternoon.jpg"
+		myColor = "Green";
+		myPic = "afternoon.jpg";}
+	else if (myHour > 18 && myHour < 24){
+			//alert ("Good Morning!");
+	myGreeting = "Good Evening";
+	myColor = "black";
+	myPic = "evening.jpg";}	
+
+	else{
+		//alert ("Good Afternoon!");
+		myGreeting = "Good Night!";
+		myColor = "Purple"
+		myPic = "night.jpg"
 	}
   
     myPic = " images/" + myPic
-
+    
 	document.getElementById ("my-greeting").innerHTML = myGreeting;
     document.querySelector("html").style.backgroundColor= myColor;
 	document.getElementById ("my-pic").src = myPic;
+	document.getElementById("demo").innerHTML = day;
 
+	
 
 
     document.getElementById("html-checker").setAttribute("href","https://validator.w3.org/nu/?doc=" + location.href);
     document.getElementById("css-checker").setAttribute("href","https://jigsaw.w3.org/css-validator/validator?uri=" + location.href);  
  </script>
+ <Script>
+	
+ </Script>
 </body>
 </html>
